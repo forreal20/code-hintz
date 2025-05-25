@@ -1,0 +1,64 @@
+#include <stdio.h>
+struct student{
+	char name[50];
+	char reg_num[20];
+	int marks[3];
+	float total;
+	float average;
+	char grade;
+}
+void inputeStudentData(struct student *students){
+	printf("Enter student name:");
+	scanf(" %s",students->name);
+	printf("Enter registration number:");
+	scanf(" %s ",students->reg_num);
+	for(int i=0; i<3; i++){
+		printf("Enter marks for subject %d:",i+1);
+		scanf(" %d ",&students->marks[i]);
+	}
+}
+	
+	void calculateTotalAverage(struct student *students){
+		students->total=0;
+		for(int i=0; i<3 ; i++){
+		students->total +=students->marks[i];
+	}
+	students->average =students->total/3.0;	
+	}
+
+void assignGrade(struct student *students){
+	if(students->average >=90){
+		students->grade='A';
+	}else if(students->average>=80){
+		students->grade='B';
+	}else if(students->average>=70){
+		students->grade='C';
+	}else if(students->average=60){
+		students->grade='D';
+	}else{
+		students->grade='F';
+	}
+	
+	void displayStudentsReport(struct student *students){
+		printf("\nStudent Report:\n");
+		printf("Name: %s\n",student->name);
+		printf("Registration Number: %s\n",student->reg_num);
+		printf("Marks: %d, %d,%d\n",student->marks[0],student->marks[1],student->marks[2]);
+		printf("Total Marks: %.2f\n",student->total);
+		printf("Average Marks:%.2f",student->average);
+		printf("Grade: %c\n",student->grade);
+	}
+}
+int main(){
+	struct student student[NUM_STUDENT];
+	for(int i=0;i<NUM_STUDENT;I++){
+	printf("\nEnterdetails for student %d:\n",i+1);
+	inputStudentData(&student[i]);
+	calculateTotalAverage(&student[i]);
+	assignGrade(&student[i]);
+	}
+	for(int i=0; i< NUM_STUDENT;i++){
+		displayStudentReport(&student[i]);
+	}
+return 0;
+} 
